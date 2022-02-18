@@ -1,4 +1,3 @@
-from turtle import pos
 from fastapi import Depends, FastAPI
 import database
 import models

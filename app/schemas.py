@@ -1,6 +1,4 @@
 from datetime import datetime
-import email
-from turtle import title
 from pydantic import BaseModel, EmailStr, Field
 
 class PostBase(BaseModel):

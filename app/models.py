@@ -1,7 +1,4 @@
-import email
-from msilib.schema import Class
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, null
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 
