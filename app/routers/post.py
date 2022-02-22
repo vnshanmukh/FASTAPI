@@ -40,6 +40,7 @@ async def delete_post(id:int,db: Session = Depends(database.get_db),get_current_
 
 @router.put("/{id}", response_model= schemas.Post)
 async def update_post(id:int, updated_post:schemas.PostCreate,db: Session = Depends(database.get_db),get_current_user : str  = Depends(oauth.get_current_user)):
+    print(get_current_user)
     post_query = db.query(models.Post).filter(models.Post.id == id)
     post = post_query.first()
     if post == None:

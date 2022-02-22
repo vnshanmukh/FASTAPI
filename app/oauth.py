@@ -14,12 +14,12 @@ def create_access_token(data:dict):
     return encoded_jwt
 def verify_access_token(token :str,credentials_exception):
     try :
-        payload =jwt.decode(token,config.settings.SECRET_KEY,algorithm=config.settings.ALGORITHM)
+        payload =jwt.decode(token,config.settings.SECRET_KEY,algorithms=config.settings.ALGORITHM)
         id : str = payload.get("user_id")
         email : str = payload.get("user_email")
-        if id is None:
+        if email is None:
             raise credentials_exception
-        token_data = schemas.TokenData(email=email)
+        token_data = schemas.TokenData(id = id, email=email)
     except JWTError:
         raise credentials_exception
     return token_data
