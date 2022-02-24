@@ -15,6 +15,7 @@ class Post(BaseModel):
     title: str
     content: str
     created_at: datetime
+    owner_id: int
     class Config:
         orm_mode = True
 
