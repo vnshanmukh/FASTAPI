@@ -1,7 +1,5 @@
 from fastapi import Depends, FastAPI
-import database
-import models
-import routers.post,routers.user,routers.auth,routers.vote
+import models , routers.post,routers.user,routers.auth,routers.vote , database
 from fastapi.middleware.cors import CORSMiddleware
 models.database.Base.metadata.create_all(bind=database.engine)
 app = FastAPI()
