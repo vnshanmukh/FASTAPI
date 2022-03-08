@@ -4,12 +4,18 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-import app.models
-import app.config
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'app'))
+
+from app.models import Base
+from app.config import settings
+
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
+
 config = context.config
-config.set_main_option("sqlalchemy.url",'postgresql+psycopg2://{app.config.settings.database_details}')
+config.set_main_option("sqlalchemy.url",f'postgresql+psycopg2://{settings.database_details}')
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
@@ -18,7 +24,7 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = app.models.Base.metadata
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
