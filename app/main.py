@@ -1,6 +1,4 @@
 from fastapi import Depends, FastAPI
-import sys, os
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'app'))
 import routers.post,routers.user,routers.auth,routers.vote
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
