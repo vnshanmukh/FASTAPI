@@ -1,5 +1,5 @@
 from fastapi import Depends, FastAPI
-import models , routers.post,routers.user,routers.auth,routers.vote , database
+import routers.post,routers.user,routers.auth,routers.vote
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
 #models.Base.metadata.create_all(bind=database.engine)
