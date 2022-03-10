@@ -1,8 +1,10 @@
 from fastapi import Depends, FastAPI
 import models , routers.post,routers.user,routers.auth,routers.vote , database
 from fastapi.middleware.cors import CORSMiddleware
-models.Base.metadata.create_all(bind=database.engine)
+from starlette.responses import FileResponse
+#models.Base.metadata.create_all(bind=database.engine)
 app = FastAPI()
+favicon_path = 'favicon.ico'
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
@@ -11,6 +13,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.get('/favicon.ico')
+async def favicon():
+    return FileResponse(favicon_path)
+
 app.include_router(routers.post.router)
 app.include_router(routers.user.router)
 app.include_router(routers.auth.router)
