@@ -1,4 +1,6 @@
 from fastapi import Depends, FastAPI
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'app'))
 import routers.post,routers.user,routers.auth,routers.vote
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
@@ -13,7 +15,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-@app.get('/favicon.ico')
+@app.get('/favicon.ico',include_in_schema=False)
 async def favicon():
     return FileResponse(favicon_path)
 
