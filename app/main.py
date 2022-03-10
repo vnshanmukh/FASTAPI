@@ -24,7 +24,7 @@ app.add_middleware(
 async def favicon():
     return FileResponse(favicon_path)
 
-@app.get('/')
+@app.get('/',include_in_schema=False)
 async def home():
     return {
         "title": "FASTAPI",
